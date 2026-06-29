@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Layanan Surat - Desa Wonokromo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--hijau-tua:#1b5e20;--hijau:#2e7d32;--hijau-muda:#43a047;--emas:#f9a825;--abu:#f5f7f0;}
+    *{font-family:'Plus Jakarta Sans',sans-serif;}
+    body{background:var(--abu);}
+    /* Navbar */
+    .navbar-desa{background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 100%);box-shadow:0 2px 20px rgba(0,0,0,.25);padding:.75rem 0;}
+    .navbar-desa .navbar-brand{font-weight:800;font-size:1.1rem;color:#fff!important;display:flex;align-items:center;gap:.5rem;}
+    .navbar-desa .nav-link{color:rgba(255,255,255,.88)!important;font-weight:600;font-size:.92rem;padding:.5rem .8rem!important;border-radius:8px;transition:all .2s;}
+    .navbar-desa .nav-link:hover,.navbar-desa .nav-link.active{color:#fff!important;background:rgba(255,255,255,.15);}
+    .navbar-desa .dropdown-menu{border:none;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.15);}
+    .navbar-desa .dropdown-item{font-weight:600;font-size:.9rem;}
+    .navbar-desa .dropdown-item:hover{background:#f5f7f0;color:#1b5e20;}
+    .btn-masuk-nav{background:#f9a825!important;color:#1b5e20!important;font-weight:700!important;border-radius:20px!important;padding:.35rem 1.1rem!important;border:none;}
+    .navbar-toggler{border-color:rgba(255,255,255,.4);}
+    .navbar-toggler-icon{filter:invert(1);}
+    /* Card & btn */
+    .card{border:none;border-radius:14px;box-shadow:0 2px 15px rgba(0,0,0,.07);}
+    .card-hover{transition:transform .25s,box-shadow .25s;}
+    .card-hover:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.12);}
+    .btn-hijau{background:#2e7d32;color:#fff;border:none;font-weight:600;}
+    .btn-hijau:hover{background:#1b5e20;color:#fff;}
+    .fw-600{font-weight:600!important;}.fw-700{font-weight:700!important;}.fw-800{font-weight:800!important;}
+    /* Tabel riwayat */
+    .tabel-riwayat{width:100%;border-collapse:collapse;font-size:.9rem;}
+    .tabel-riwayat thead th{background:#f5f7f0;color:#555;font-weight:700;font-size:.82rem;padding:.7rem 1rem;border-bottom:2px solid #e8ede8;}
+    .tabel-riwayat tbody td{padding:.75rem 1rem;border-bottom:1px solid #f0f4f0;vertical-align:middle;}
+    .tabel-riwayat tbody tr:last-child td{border-bottom:none;}
+    .tabel-riwayat .jenis-surat{color:#2e7d32;font-weight:600;}
+    .badge-menunggu{background:#17a2b8;color:#fff;font-size:.75rem;padding:.3rem .7rem;border-radius:6px;font-weight:600;}
+    .badge-diperiksa{background:#17a2b8;color:#fff;font-size:.75rem;padding:.3rem .7rem;border-radius:6px;font-weight:600;}
+    .badge-selesai{background:#198754;color:#fff;font-size:.75rem;padding:.3rem .7rem;border-radius:6px;font-weight:600;}
+    .badge-ditolak{background:#dc3545;color:#fff;font-size:.75rem;padding:.3rem .7rem;border-radius:6px;font-weight:600;}
+    .btn-aksi-detail{background:#fff;border:1.5px solid #dee2e6;border-radius:8px;padding:.3rem .55rem;color:#555;transition:all .2s;line-height:1;}
+    .btn-aksi-detail:hover{background:#f5f7f0;border-color:#2e7d32;color:#2e7d32;}
+    .btn-aksi-download{background:#fff;border:1.5px solid #dee2e6;border-radius:8px;padding:.3rem .55rem;color:#555;transition:all .2s;line-height:1;margin-left:4px;}
+    .btn-aksi-download:hover{background:#e8f5e9;border-color:#2e7d32;color:#2e7d32;}
+    /* Section title */
+    .sec-title{display:flex;align-items:center;gap:.5rem;font-weight:800;color:#1b5e20;font-size:1rem;margin-bottom:1rem;}
+    .sec-title i{color:#2e7d32;}
+    /* Form */
+    .sub-judul{color:#1b5e20;font-weight:700;border-bottom:2px solid #e8f5e9;padding-bottom:.5rem;margin-bottom:1rem;margin-top:1.5rem;}
+    .form-control,.form-select{border-radius:10px;border:2px solid #e8e8e8;padding:.6rem 1rem;font-size:.92rem;}
+    .form-control:focus,.form-select:focus{border-color:#2e7d32;box-shadow:0 0 0 3px rgba(46,125,50,.1);}
+    .form-label{font-weight:600;color:#333;font-size:.9rem;}
+    /* Ganti sandi */
+    .input-sandi input{border-radius:10px 0 0 10px!important;border:2px solid #c8e6c9;border-right:none!important;}
+    .input-sandi button{border:2px solid #c8e6c9;border-left:none;border-radius:0 10px 10px 0;background:#f9fff9;}
+    /* Footer */
+    .footer-desa{background:linear-gradient(135deg,#1b5e20,#0d3b11);color:rgba(255,255,255,.85);padding:2.5rem 0 1rem;margin-top:3rem;}
+    .footer-desa h6{color:#f9a825;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;}
+    .footer-desa a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;}
+    .footer-desa a:hover{color:#f9a825;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:1.5rem;padding-top:1rem;font-size:.82rem;color:rgba(255,255,255,.5);}
+    /* Detail surat halaman */
+    .detail-info-table{width:100%;}
+    .detail-info-table td{padding:.55rem 0;font-size:.92rem;vertical-align:top;}
+    .detail-info-table td:first-child{color:#888;font-weight:600;width:40%;padding-right:1rem;}
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-desa sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div style="width:42px;height:42px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <i class="bi bi-house-heart-fill" style="font-size:1.2rem;color:#fdd835"></i>
+      </div>
+      <div>
+        <div style="font-size:.75rem;font-weight:500;opacity:.8;line-height:1">Desa Wonokromo</div>
+        <div style="font-size:.85rem;line-height:1.2">Kec. Tikung, Kab. Lamongan</div>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house me-1"></i>Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="berita.html"><i class="bi bi-newspaper me-1"></i>Berita</a></li>
+        <li class="nav-item"><a class="nav-link" href="profil_desa.html"><i class="bi bi-info-circle me-1"></i>Profil Desa</a></li>
+        <li class="nav-item"><a class="nav-link" href="perangkat_desa.html"><i class="bi bi-people me-1"></i>Perangkat</a></li>
+        <li class="nav-item"><a class="nav-link" href="infografik.html"><i class="bi bi-bar-chart-line me-1"></i>APBDesa</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="bi bi-diagram-3 me-1"></i>Lembaga</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-building me-2 text-success"></i>BPD</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-people-fill me-2 text-success"></i>LPM</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-shop me-2 text-success"></i>BUMDes</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-heart me-2 text-success"></i>PKK</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="masuk_warga.html" class="btn btn-masuk-nav ms-2"><i class="bi bi-box-arrow-in-right me-1"></i>Masuk</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Header hijau -->
+<div style="background:linear-gradient(135deg,#1b5e20,#2e7d32);padding:2.5rem 0 1.5rem;">
+  <div class="container d-flex justify-content-between align-items-center flex-wrap gap-3">
+    <div>
+      <h2 style="color:#fff;font-weight:800;margin:0;"><i class="bi bi-file-earmark-text me-2" style="color:#fdd835;"></i>Layanan Surat Desa</h2>
+      <p style="color:rgba(255,255,255,.75);margin:0;font-size:.9rem;">Selamat datang, <strong id="sapaanNama"></strong></p>
+    </div>
+    <button onclick="keluar()" class="btn btn-outline-light btn-sm fw-600"><i class="bi bi-box-arrow-right me-1"></i>Keluar</button>
+  </div>
+</div>
+
+<div class="container py-4">
+
+  <!-- ══════════════════════════════════════
+       HALAMAN UTAMA
+  ══════════════════════════════════════ -->
+  <div id="halamanUtama">
+
+    <!-- Alert berhasil kirim -->
+    <div id="alertBerhasil" class="alert alert-success rounded-3 d-none align-items-center gap-2 mb-4" style="border:none;background:#e8f5e9;">
+      <i class="bi bi-check-circle-fill text-success"></i>
+      <span><strong>Pengajuan berhasil dikirim!</strong> Petugas akan segera memproses permohonan Anda.</span>
+    </div>
+
+    <!-- Grid jenis surat -->
+    <h5 class="sec-title"><i class="bi bi-grid"></i>Pilih Jenis Layanan Surat</h5>
+    <div class="row g-3 mb-5" id="gridJenisSurat"></div>
+
+    <!-- Tabel riwayat - persis seperti gambar -->
+    <div class="card mb-4">
+      <div class="card-body p-0">
+        <div class="p-3 pb-0">
+          <h5 class="sec-title mb-0"><i class="bi bi-clock-history"></i>Riwayat Pengajuan Surat</h5>
+        </div>
+        <div class="table-responsive">
+          <table class="tabel-riwayat">
+            <thead>
+              <tr>
+                <th style="width:40px;">No</th>
+                <th>Tgl Pengajuan</th>
+                <th>Jenis Surat</th>
+                <th>Nama</th>
+                <th>Status</th>
+                <th>Keterangan</th>
+                <th class="text-center" style="width:90px;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tabelRiwayat"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pengaturan Akun -->
+    <div class="mt-2 pt-2" style="border-top:2px dashed #c8e6c9;">
+      <h5 class="sec-title"><i class="bi bi-gear"></i>Pengaturan Akun</h5>
+      <div class="card p-3 d-flex flex-row align-items-center justify-content-between flex-wrap gap-3" style="border:1px solid #e8f5e9;">
+        <div class="d-flex align-items-center gap-3">
+          <div style="width:46px;height:46px;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+            <i class="bi bi-shield-lock-fill" style="font-size:1.3rem;color:#2e7d32;"></i>
+          </div>
+          <div>
+            <div style="font-weight:700;color:#1b5e20;font-size:.95rem;">Ganti Kata Sandi</div>
+            <div style="font-size:.82rem;color:#666;">Perbarui kata sandi akun Anda secara berkala untuk keamanan.</div>
+          </div>
+        </div>
+        <button onclick="bukaGantiSandi()" class="btn btn-hijau btn-sm px-4" style="border-radius:10px;font-weight:700;">
+          <i class="bi bi-key me-1"></i>Ganti Sandi
+        </button>
+      </div>
+    </div>
+  </div><!-- /halamanUtama -->
+
+
+  <!-- ══════════════════════════════════════
+       HALAMAN FORM SURAT
+  ══════════════════════════════════════ -->
+  <div id="halamanForm" class="d-none">
+    <div style="background:linear-gradient(135deg,#1b5e20,#2e7d32);padding:2rem 1.5rem 1.5rem;margin-bottom:2rem;border-radius:16px;">
+  <h2 style="color:#fff;font-weight:800;margin:0;"><i class="bi bi-file-earmark-plus me-2" style="color:#fdd835;"></i>Formulir <span id="judulForm"></span></h2>
+</div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card p-4">
+          <div class="alert alert-info mb-4" style="background:#e3f2fd;border:none;border-radius:10px;font-size:.88rem;">
+            <i class="bi bi-info-circle-fill me-2 text-primary"></i>
+            Isi formulir sesuai data pada <strong>KTP/KK</strong> Anda. Pastikan data yang dimasukkan benar dan lengkap.
+          </div>
+          <div id="isiForm"></div>
+          <h6 class="sub-judul mt-4"><i class="bi bi-file-image me-2"></i>Dokumen Pendukung</h6>
+          <div class="mb-3">
+            <label class="form-label">Foto KTP / KK <span class="text-danger">*</span></label>
+            <input type="file" class="form-control" accept="image/*">
+            <div class="form-text">Upload foto KTP atau Kartu Keluarga (JPG/PNG). Maks 3MB.</div>
+          </div>
+          <div class="d-flex gap-3 mt-4">
+            <button onclick="kirimForm()" class="btn btn-hijau px-4 py-2 fw-600">
+              <span id="teksBtnKirim"><i class="bi bi-send me-2"></i>Kirim Pengajuan</span>
+              <span id="loadingBtnKirim" class="d-none"><span class="spinner-border spinner-border-sm me-2"></span>Mengirim...</span>
+            </button>
+            <button onclick="tampilUtama()" class="btn btn-outline-secondary px-4 py-2"><i class="bi bi-arrow-left me-1"></i>Kembali</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /halamanForm -->
+
+
+  <!-- ══════════════════════════════════════
+       HALAMAN DETAIL SURAT (persis gambar)
+  ══════════════════════════════════════ -->
+  <div id="halamanDetail" class="d-none">
+    <!-- Header hijau "Detail Pengajuan Surat" -->
+    <div style="background:#2e7d32;padding:1.5rem 0;margin:-1.5rem -12px 2rem;border-radius:0 0 0 0;">
+      <div class="container">
+        <h2 style="color:#fff;font-weight:800;margin:0;font-size:1.5rem;">Detail Pengajuan Surat</h2>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="card p-4">
+          <!-- Judul surat + badge status -->
+          <div class="d-flex justify-content-between align-items-start mb-3">
+            <div>
+              <h5 style="color:#1b5e20;font-weight:800;margin:0;" id="detailJudul"></h5>
+              <div style="font-size:.85rem;color:#888;" id="detailNomor"></div>
+            </div>
+            <span id="detailBadge" style="font-size:.9rem;font-weight:700;padding:.35rem .9rem;border-radius:8px;"></span>
+          </div>
+
+          <!-- Tabel info -->
+          <table class="detail-info-table mb-3">
+            <tr><td>Tanggal Pengajuan</td><td id="detailTgl"></td></tr>
+            <tr><td>Nama Lengkap</td><td id="detailNama"></td></tr>
+            <tr><td>NIK</td><td id="detailNIK"></td></tr>
+            <tr><td>Alamat</td><td id="detailAlamat"></td></tr>
+            <tr id="rowKet" style="display:none;"><td>Keterangan Petugas</td><td id="detailKet" style="color:#e65100;font-weight:600;"></td></tr>
+          </table>
+
+          <!-- Alert selesai -->
+          <div id="detailAlertSelesai" class="alert align-items-center gap-2 mb-3 d-none" style="background:#e8f5e9;border:none;border-radius:10px;color:#1b5e20;">
+            <i class="bi bi-check-circle-fill me-2"></i><strong>Surat sudah selesai diproses!</strong> Klik tombol di bawah untuk mengunduh surat Anda.
+          </div>
+          <!-- Alert ditolak -->
+          <div id="detailAlertDitolak" class="alert align-items-center gap-2 mb-3 d-none" style="background:#fdecea;border:none;border-radius:10px;color:#c62828;">
+            <i class="bi bi-x-circle-fill me-2"></i><strong>Pengajuan ditolak.</strong> Silakan hubungi kantor desa atau ajukan ulang.
+          </div>
+          <!-- Alert diperiksa -->
+          <div id="detailAlertDiperiksa" class="alert align-items-center gap-2 mb-3 d-none" style="background:#e3f2fd;border:none;border-radius:10px;color:#0d47a1;">
+            <i class="bi bi-search me-2"></i><strong>Sedang diperiksa.</strong> Petugas sedang memverifikasi berkas Anda, mohon ditunggu.
+          </div>
+          <!-- Alert menunggu -->
+          <div id="detailAlertMenunggu" class="alert align-items-center gap-2 mb-3 d-none" style="background:#fff8e1;border:none;border-radius:10px;color:#e65100;">
+            <i class="bi bi-hourglass-split me-2"></i><strong>Menunggu.</strong> Pengajuan Anda telah diterima dan menunggu diproses petugas.
+          </div>
+
+          <!-- Tombol download (hanya muncul jika selesai) -->
+          <div id="detailBtnDownload" class="d-none mb-2">
+            <button class="btn btn-success w-100 py-2 fw-700" style="border-radius:10px;font-size:1rem;"
+              onclick="alert('Fitur download tersedia pada sistem yang terhubung ke server.')">
+              <i class="bi bi-download me-2"></i>Download Surat PDF
+            </button>
+          </div>
+
+          <!-- Kembali -->
+          <button onclick="tampilUtama()" class="btn btn-outline-secondary w-100 mt-1" style="border-radius:10px;">
+            <i class="bi bi-arrow-left me-1"></i>Kembali
+          </button>
+        </div>
+      </div>
+    </div>
+  </div><!-- /halamanDetail -->
+
+
+  <!-- ══════════════════════════════════════
+       HALAMAN GANTI SANDI
+  ══════════════════════════════════════ -->
+  <div id="halamanGantiSandi" class="d-none">
+    <div style="min-height:70vh;background:linear-gradient(135deg,#e8f5e9 0%,#f1f8e9 100%);display:flex;align-items:center;padding:3rem 0;margin:-1.5rem -12px;border-radius:0 0 20px 20px;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-sm-10 col-md-7 col-lg-5">
+            <div class="text-center mb-4">
+              <div style="width:72px;height:72px;background:linear-gradient(135deg,#2e7d32,#43a047);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:0 8px 24px rgba(46,125,50,.3);">
+                <i class="bi bi-shield-lock-fill" style="font-size:2.2rem;color:#fff;"></i>
+              </div>
+              <h3 style="font-weight:800;color:#1b5e20;">Ganti Kata Sandi</h3>
+              <p class="text-muted" style="font-size:.93rem;">Halo, <strong id="namaGantiSandi"></strong>. Perbarui kata sandi akun Anda di sini.</p>
+            </div>
+            <div class="card p-4" style="border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.1);">
+              <div id="alertGagalSandi" class="alert d-none align-items-start gap-2 mb-3" style="background:#fdecea;border:1px solid #ef9a9a;border-radius:12px;color:#c62828;">
+                <i class="bi bi-exclamation-triangle-fill mt-1"></i>
+                <span id="pesanGagalSandi"></span>
+              </div>
+              <div id="alertBerhasilSandi" class="alert d-none align-items-center gap-2 mb-3" style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:12px;color:#1b5e20;">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>Kata sandi berhasil diperbarui. Gunakan kata sandi baru saat masuk berikutnya.</span>
+              </div>
+              <div id="formGantiSandiWrap">
+                <div class="mb-3">
+                  <label class="form-label fw-600" style="color:#1b5e20;"><i class="bi bi-lock me-1"></i>Kata Sandi Lama</label>
+                  <div class="input-group input-sandi">
+                    <input type="password" id="sandiLama" class="form-control form-control-lg" placeholder="Masukkan kata sandi saat ini">
+                    <button class="btn" type="button" onclick="toggleSandi('sandiLama','ikonLama')"><i class="bi bi-eye" id="ikonLama"></i></button>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label fw-600" style="color:#1b5e20;"><i class="bi bi-lock-fill me-1"></i>Kata Sandi Baru</label>
+                  <div class="input-group input-sandi">
+                    <input type="password" id="sandiBaru" class="form-control form-control-lg" placeholder="Minimal 8 karakter" oninput="cekKekuatan(this.value)">
+                    <button class="btn" type="button" onclick="toggleSandi('sandiBaru','ikonBaru')"><i class="bi bi-eye" id="ikonBaru"></i></button>
+                  </div>
+                  <div id="kekuatanWrap" class="mt-2" style="display:none;">
+                    <div class="progress" style="height:5px;border-radius:4px;">
+                      <div class="progress-bar" id="barKekuatan" role="progressbar" style="width:0%;transition:width .3s;"></div>
+                    </div>
+                    <small id="labelKekuatan" style="font-size:.78rem;"></small>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <label class="form-label fw-600" style="color:#1b5e20;"><i class="bi bi-lock-fill me-1"></i>Konfirmasi Kata Sandi Baru</label>
+                  <div class="input-group input-sandi">
+                    <input type="password" id="konfirmasiSandi" class="form-control form-control-lg" placeholder="Ulangi kata sandi baru" oninput="cekKonfirmasi()">
+                    <button class="btn" type="button" onclick="toggleSandi('konfirmasiSandi','ikonKonfirmasi')"><i class="bi bi-eye" id="ikonKonfirmasi"></i></button>
+                  </div>
+                  <small id="pesanKonfirmasi" class="mt-1 d-block" style="font-size:.8rem;"></small>
+                </div>
+                <button onclick="simpanSandi()" class="btn btn-hijau btn-lg w-100" style="border-radius:12px;font-weight:700;padding:.8rem;">
+                  <span id="teksBtnSandi"><i class="bi bi-shield-check me-2"></i>Simpan Kata Sandi Baru</span>
+                  <span id="loadingBtnSandi" class="d-none"><span class="spinner-border spinner-border-sm me-2"></span>Menyimpan...</span>
+                </button>
+              </div>
+              <div class="text-center mt-4 pt-3" style="border-top:1px solid #e8f5e9;">
+                <button onclick="tampilUtama()" style="font-size:.88rem;color:#2e7d32;font-weight:600;background:none;border:none;cursor:pointer;">
+                  <i class="bi bi-arrow-left me-1"></i>Kembali ke Dashboard
+                </button>
+              </div>
+            </div>
+            <div class="alert alert-info mt-3 rounded-3" style="font-size:.83rem;border:none;background:#e3f2fd;">
+              <i class="bi bi-info-circle-fill me-2 text-primary"></i>
+              <strong>Tips keamanan:</strong> Gunakan kombinasi huruf besar, huruf kecil, angka, dan simbol agar kata sandi lebih kuat.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /halamanGantiSandi -->
+
+</div><!-- /container -->
+
+<footer class="footer-desa">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4"><h6><i class="bi bi-house-heart me-2"></i>Desa Wonokromo</h6><p style="font-size:.9rem;line-height:1.7">Desa Wonokromo, Kecamatan Tikung,<br>Kabupaten Lamongan, Jawa Timur<br>Kode Pos: 62284</p></div>
+      <div class="col-md-4"><h6><i class="bi bi-telephone me-2"></i>Kontak Kami</h6><ul class="list-unstyled" style="font-size:.9rem"><li class="mb-1"><i class="bi bi-telephone-fill me-2 text-warning"></i>(0322) 123456</li><li class="mb-1"><i class="bi bi-envelope-fill me-2 text-warning"></i>desawonokromo@gmail.com</li><li class="mb-1"><i class="bi bi-clock-fill me-2 text-warning"></i>Senin - Jumat, 08.00 - 15.00</li></ul></div>
+      <div class="col-md-4"><h6><i class="bi bi-link-45deg me-2"></i>Tautan Cepat</h6><ul class="list-unstyled" style="font-size:.9rem"><li class="mb-1"><a href="berita.html"><i class="bi bi-chevron-right me-1"></i>Berita Desa</a></li><li class="mb-1"><a href="profil_desa.html"><i class="bi bi-chevron-right me-1"></i>Profil Desa</a></li><li class="mb-1"><a href="lembaga_desa.html"><i class="bi bi-chevron-right me-1"></i>Lembaga Desa</a></li></ul></div>
+    </div>
+    <div class="footer-bottom text-center">© 2026 Desa Wonokromo, Kecamatan Tikung, Kabupaten Lamongan.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// ── Data ──────────────────────────────────────────────────────────────
+const jenisSuratList = [
+  {kode:'SPIK',nama:'Izin Keramaian'},{kode:'SKKM',nama:'Keterangan Kematian'},
+  {kode:'SKP',nama:'Keterangan Pindah'},{kode:'SIT',nama:'Izin Tempat'},
+  {kode:'SKNN',nama:'Numpang Nikah'},{kode:'SKWN',nama:'Wali Nikah'},
+  {kode:'SKPT',nama:'Kepemilikan Tanah'},{kode:'SKKA',nama:'Kepemilikan Aset'},
+  {kode:'SKJBT',nama:'Jual Beli Tanah'},{kode:'SKTW',nama:'Tanah Waqaf'},
+  {kode:'SKOP',nama:'Penghasilan Orang Tua'},{kode:'SPAK',nama:'Pengantar Akta Kelahiran'},
+  {kode:'SKD',nama:'Keterangan Domisili'},{kode:'SKK',nama:'Keterangan Kehilangan'},
+  {kode:'SKU',nama:'Keterangan Usaha'},{kode:'SKTM',nama:'Keterangan Tidak Mampu'},
+  {kode:'SKCK',nama:'Pengantar SKCK'},{kode:'SIIK',nama:'Izin Tidak Masuk Kerja'},
+];
+
+const riwayatDummy = {
+  '3573010101900001':[
+    {no:'001',tgl:'2 Juni 2026',jenis:'Surat Keterangan Domisili',nama:'Siti Aminah',status:'selesai',ket:'data sudah lengkap',alamat:'Dusun Krajan RT 001/RW 001 Desa Wonokromo Kec. Tikung Kab. Lamongan'},
+    {no:'002',tgl:'15 Mei 2026',jenis:'Surat Pengantar SKCK',nama:'Siti Aminah',status:'selesai',ket:'surat sudah selesai',alamat:'Dusun Krajan RT 001/RW 001 Desa Wonokromo Kec. Tikung Kab. Lamongan'},
+  ],
+  '3573010201950002':[
+    {no:'003',tgl:'5 Juni 2026',jenis:'Surat Keterangan Tidak Mampu',nama:'Budi Prasetyo',status:'diperiksa',ket:'masih antre',alamat:'Dusun Bendungan RT 002/RW 001 Desa Wonokromo Kec. Tikung Kab. Lamongan'},
+  ],
+  '3573010401920004':[
+    {no:'004',tgl:'20 April 2026',jenis:'Surat Keterangan Usaha',nama:'Ahmad Ridwan',status:'ditolak',ket:'ktp tidak sesuai',alamat:'Dusun Krajan RT 003/RW 002 Desa Wonokromo Kec. Tikung Kab. Lamongan'},
+  ],
+};
+
+const badgeStyle = {
+  menunggu: 'background:#17a2b8;color:#fff;',
+  diperiksa:'background:#17a2b8;color:#fff;',
+  selesai:  'background:#198754;color:#fff;',
+  ditolak:  'background:#dc3545;color:#fff;',
+};
+const badgeLabel = {menunggu:'Menunggu',diperiksa:'Sedang Diperiksa',selesai:'Selesai',ditolak:'Ditolak'};
+
+let wargaAktif = null;
+let riwayatSesi = [];
+let jenisDipilih = {};
+let sandiWarga = {};
+
+// ── Init ──────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const sesi = sessionStorage.getItem('wargaLogin');
+  if (!sesi) { window.location.href = 'masuk_warga.html'; return; }
+  wargaAktif = JSON.parse(sesi);
+  document.getElementById('sapaanNama').textContent = wargaAktif.nama;
+  document.getElementById('namaGantiSandi').textContent = wargaAktif.nama;
+  sandiWarga[wargaAktif.nik] = wargaAktif.sandi || '01011990';
+  renderGrid();
+  renderRiwayat();
+  if (sessionStorage.getItem('pengajuanBerhasil')) {
+    sessionStorage.removeItem('pengajuanBerhasil');
+    const al = document.getElementById('alertBerhasil');
+    al.classList.remove('d-none'); al.classList.add('d-flex');
+  }
+});
+
+function keluar(){ sessionStorage.removeItem('wargaLogin'); window.location.href='masuk_warga.html'; }
+
+// ── Navigasi ──────────────────────────────────────────────────────────
+function tampilUtama(){
+  ['halamanForm','halamanDetail','halamanGantiSandi'].forEach(id=>document.getElementById(id).classList.add('d-none'));
+  document.getElementById('halamanUtama').classList.remove('d-none');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function bukaGantiSandi(){
+  document.getElementById('halamanUtama').classList.add('d-none');
+  document.getElementById('halamanGantiSandi').classList.remove('d-none');
+  ['sandiLama','sandiBaru','konfirmasiSandi'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('alertGagalSandi').classList.add('d-none');
+  document.getElementById('alertBerhasilSandi').classList.add('d-none');
+  document.getElementById('formGantiSandiWrap').classList.remove('d-none');
+  document.getElementById('kekuatanWrap').style.display='none';
+  document.getElementById('pesanKonfirmasi').textContent='';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Grid ──────────────────────────────────────────────────────────────
+function renderGrid(){
+  document.getElementById('gridJenisSurat').innerHTML = jenisSuratList.map(j=>`
+    <div class="col-6 col-md-4">
+      <a href="javascript:void(0)" onclick="bukaForm('${j.kode}','${j.nama}')" class="text-decoration-none">
+        <div class="card card-hover p-3 text-center h-100" style="border:2px solid #e8f5e9;cursor:pointer;">
+          <div style="width:54px;height:54px;background:linear-gradient(135deg,#e8f5e9,#c8e6c9);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;">
+            <i class="bi bi-file-earmark-text" style="font-size:1.5rem;color:#2e7d32;"></i>
+          </div>
+          <div style="font-weight:700;color:#1b5e20;font-size:.88rem;line-height:1.4;">${j.nama}</div>
+        </div>
+      </a>
+    </div>`).join('');
+}
+
+// ── Riwayat ───────────────────────────────────────────────────────────
+function renderRiwayat(){
+  const tbody = document.getElementById('tabelRiwayat');
+  const base  = riwayatDummy[wargaAktif.nik] || [];
+  const semua = [...riwayatSesi, ...base];
+
+  if(!semua.length){
+    tbody.innerHTML=`<tr><td colspan="7" class="text-center py-4 text-muted">
+      <i class="bi bi-inbox" style="font-size:2rem;opacity:.25;display:block;margin-bottom:.4rem;"></i>
+      Belum ada pengajuan surat.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = semua.map((r,i)=>{
+    const bStyle = badgeStyle[r.status]||badgeStyle.menunggu;
+    const bLabel = badgeLabel[r.status]||'Menunggu';
+    const btnDl = r.status==='selesai'
+      ? `<button class="btn-aksi-download" title="Download" onclick='bukaDetail(${JSON.stringify(r).replace(/'/g,"\\'")})'><i class="bi bi-download" style="font-size:.85rem;"></i></button>` : '';
+    return `<tr>
+      <td>${i+1}</td>
+      <td style="white-space:nowrap;">${r.tgl}</td>
+      <td class="jenis-surat">${r.jenis}</td>
+      <td>${r.nama}</td>
+      <td><span style="${bStyle}font-size:.75rem;padding:.3rem .7rem;border-radius:6px;font-weight:600;">${bLabel}</span></td>
+      <td style="color:#555;font-size:.85rem;">${r.ket}</td>
+      <td class="text-center" style="white-space:nowrap;">
+        <button class="btn-aksi-detail" title="Lihat Detail" onclick='bukaDetail(${JSON.stringify(r).replace(/'/g,"\\'")})'><i class="bi bi-eye" style="font-size:.85rem;"></i></button>
+        ${btnDl}
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Detail Surat (halaman penuh, persis gambar) ────────────────────────
+function bukaDetail(r){
+  // Set konten
+  document.getElementById('detailJudul').textContent = r.jenis;
+  document.getElementById('detailNomor').textContent = r.no ? 'Nomor: ' + r.no : '';
+  document.getElementById('detailTgl').textContent   = r.tgl;
+  document.getElementById('detailNama').textContent  = r.nama;
+  document.getElementById('detailNIK').textContent   = wargaAktif.nik;
+  document.getElementById('detailAlamat').textContent= r.alamat || 'Desa Wonokromo, Kec. Tikung, Kab. Lamongan';
+
+  // Badge status
+  const bStyle = badgeStyle[r.status]||badgeStyle.menunggu;
+  const bLabel = badgeLabel[r.status]||'Menunggu';
+  const badgeEl = document.getElementById('detailBadge');
+  badgeEl.setAttribute('style', bStyle + 'font-size:.9rem;font-weight:700;padding:.35rem .9rem;border-radius:8px;');
+  badgeEl.textContent = bLabel;
+
+  // Keterangan petugas
+  const rowKet = document.getElementById('rowKet');
+  if(r.ket){ rowKet.style.display=''; document.getElementById('detailKet').textContent=r.ket; }
+  else { rowKet.style.display='none'; }
+
+  // Alert & tombol download
+  ['detailAlertSelesai','detailAlertDitolak','detailAlertDiperiksa','detailAlertMenunggu'].forEach(id=>{
+    document.getElementById(id).classList.add('d-none');
+  });
+  document.getElementById('detailBtnDownload').classList.add('d-none');
+
+  if(r.status==='selesai'){
+    document.getElementById('detailAlertSelesai').classList.remove('d-none');
+    document.getElementById('detailBtnDownload').classList.remove('d-none');
+  } else if(r.status==='ditolak'){
+    document.getElementById('detailAlertDitolak').classList.remove('d-none');
+  } else if(r.status==='diperiksa'){
+    document.getElementById('detailAlertDiperiksa').classList.remove('d-none');
+  } else {
+    document.getElementById('detailAlertMenunggu').classList.remove('d-none');
+  }
+
+  // Tampilkan halaman
+  document.getElementById('halamanUtama').classList.add('d-none');
+  document.getElementById('halamanDetail').classList.remove('d-none');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── Form Surat ────────────────────────────────────────────────────────
+function bukaForm(kode,nama){
+  jenisDipilih={kode,nama};
+  document.getElementById('judulForm').textContent=nama;
+  document.getElementById('isiForm').innerHTML=buatIsiForm(kode);
+  document.getElementById('halamanUtama').classList.add('d-none');
+  document.getElementById('halamanForm').classList.remove('d-none');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function kirimForm(){
+  document.getElementById('teksBtnKirim').classList.add('d-none');
+  document.getElementById('loadingBtnKirim').classList.remove('d-none');
+  setTimeout(()=>{
+    const now=new Date();
+    const tgl=now.toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'});
+    const bln=String(now.getMonth()+1).padStart(2,'0');
+    const no=String(Math.floor(Math.random()*900)+100);
+    riwayatSesi.unshift({
+      no, tgl, jenis:jenisDipilih.nama, nama:wargaAktif.nama,
+      status:'menunggu', ket:'menunggu konfirmasi petugas',
+      alamat:'Desa Wonokromo, Kec. Tikung, Kab. Lamongan'
+    });
+    document.getElementById('teksBtnKirim').classList.remove('d-none');
+    document.getElementById('loadingBtnKirim').classList.add('d-none');
+    sessionStorage.setItem('pengajuanBerhasil','1');
+    tampilUtama(); renderRiwayat();
+    const al=document.getElementById('alertBerhasil');
+    al.classList.remove('d-none'); al.classList.add('d-flex');
+  },1000);
+}
+
+// ── Ganti Sandi ───────────────────────────────────────────────────────
+function toggleSandi(inputId,ikonId){
+  const inp=document.getElementById(inputId),ikon=document.getElementById(ikonId);
+  inp.type=inp.type==='password'?'text':'password';
+  ikon.className=inp.type==='password'?'bi bi-eye':'bi bi-eye-slash';
+}
+function cekKekuatan(val){
+  const wrap=document.getElementById('kekuatanWrap'),bar=document.getElementById('barKekuatan'),lbl=document.getElementById('labelKekuatan');
+  if(!val){wrap.style.display='none';return;}
+  wrap.style.display='block';
+  let s=0;
+  if(val.length>=8)s++;if(/[A-Z]/.test(val))s++;if(/[0-9]/.test(val))s++;if(/[^A-Za-z0-9]/.test(val))s++;
+  const lv=[{p:25,w:'#e53935',t:'Sangat lemah'},{p:50,w:'#fb8c00',t:'Lemah'},{p:75,w:'#fdd835',t:'Cukup'},{p:100,w:'#43a047',t:'Kuat'}][s-1]||{p:10,w:'#e53935',t:'Terlalu pendek'};
+  bar.style.width=lv.p+'%';bar.style.background=lv.w;lbl.textContent='Kekuatan: '+lv.t;lbl.style.color=lv.w;
+}
+function cekKonfirmasi(){
+  const b=document.getElementById('sandiBaru').value,k=document.getElementById('konfirmasiSandi').value,p=document.getElementById('pesanKonfirmasi');
+  if(!k){p.textContent='';return;}
+  if(b===k){p.textContent='✓ Kata sandi cocok';p.style.color='#2e7d32';}
+  else{p.textContent='✗ Kata sandi tidak cocok';p.style.color='#e53935';}
+}
+function simpanSandi(){
+  const lama=document.getElementById('sandiLama').value,baru=document.getElementById('sandiBaru').value,konfirmasi=document.getElementById('konfirmasiSandi').value;
+  const alertGagal=document.getElementById('alertGagalSandi'),pesanGagal=document.getElementById('pesanGagalSandi');
+  alertGagal.classList.add('d-none');
+  const sandiSekarang=sandiWarga[wargaAktif.nik]||wargaAktif.sandi;
+  if(lama!==sandiSekarang){pesanGagal.textContent='Kata sandi lama tidak sesuai.';alertGagal.classList.remove('d-none');alertGagal.classList.add('d-flex');return;}
+  if(baru.length<8){pesanGagal.textContent='Kata sandi baru minimal 8 karakter.';alertGagal.classList.remove('d-none');alertGagal.classList.add('d-flex');return;}
+  if(baru!==konfirmasi){pesanGagal.textContent='Konfirmasi kata sandi tidak cocok.';alertGagal.classList.remove('d-none');alertGagal.classList.add('d-flex');return;}
+  document.getElementById('teksBtnSandi').classList.add('d-none');
+  document.getElementById('loadingBtnSandi').classList.remove('d-none');
+  setTimeout(()=>{
+    sandiWarga[wargaAktif.nik]=baru;wargaAktif.sandi=baru;
+    sessionStorage.setItem('wargaLogin',JSON.stringify(wargaAktif));
+    document.getElementById('teksBtnSandi').classList.remove('d-none');
+    document.getElementById('loadingBtnSandi').classList.add('d-none');
+    document.getElementById('formGantiSandiWrap').classList.add('d-none');
+    document.getElementById('alertBerhasilSandi').classList.remove('d-none');
+    document.getElementById('alertBerhasilSandi').classList.add('d-flex');
+  },900);
+}
+
+// ── Form builder ──────────────────────────────────────────────────────
+function buatIsiForm(kode){
+  const ag=`<option value="">-- Pilih --</option><option>Islam</option><option>Kristen</option><option>Katolik</option><option>Hindu</option><option>Buddha</option><option>Konghucu</option>`;
+  const jk=`<option value="">-- Pilih --</option><option>Laki-laki</option><option>Perempuan</option>`;
+  const sk=`<option value="">-- Pilih --</option><option>Belum Kawin</option><option>Kawin</option><option>Cerai Hidup</option><option>Cerai Mati</option>`;
+  const dasar=(extra='')=>`
+    <h6 class="sub-judul"><i class="bi bi-person me-2"></i>Data Diri</h6>
+    <div class="row g-3">
+      <div class="col-md-6"><label class="form-label">Nama Lengkap (sesuai KTP) <span class="text-danger">*</span></label><input type="text" class="form-control" placeholder="Nama sesuai KTP" required></div>
+      <div class="col-md-6"><label class="form-label">NIK <span class="text-danger">*</span></label><input type="text" class="form-control" maxlength="16" value="${wargaAktif?wargaAktif.nik:''}" required></div>
+      <div class="col-12"><label class="form-label">Alamat Lengkap (sesuai KTP) <span class="text-danger">*</span></label><textarea class="form-control" rows="2" required></textarea></div>
+      <div class="col-md-6"><label class="form-label">Agama <span class="text-danger">*</span></label><select class="form-select" required>${ag}</select></div>
+      <div class="col-md-6"><label class="form-label">Jenis Kelamin <span class="text-danger">*</span></label><select class="form-select" required>${jk}</select></div>
+      <div class="col-md-6"><label class="form-label">Pekerjaan <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>
+      <div class="col-md-6"><label class="form-label">Status Perkawinan <span class="text-danger">*</span></label><select class="form-select" required>${sk}</select></div>
+      ${extra}
+    </div>`;
+  const forms={
+    SPIK:dasar(`<div class="col-md-6"><label class="form-label">Tempat Lahir <span class="text-danger">*</span></label><input type="text" class="form-control" required></div><div class="col-md-6"><label class="form-label">Tanggal Lahir <span class="text-danger">*</span></label><input type="date" class="form-control" required></div>`)+`
+      <h6 class="sub-judul"><i class="bi bi-calendar-event me-2"></i>Data Kegiatan</h6>
+      <div class="row g-3">
+        <div class="col-md-6"><label class="form-label">Nama Hajatan/Acara <span class="text-danger">*</span></label><input type="text" class="form-control" placeholder="Contoh: Pernikahan, Khitanan" required></div>
+        <div class="col-md-6"><label class="form-label">Nama Kegiatan <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>
+        <div class="col-md-6"><label class="form-label">Tanggal Kegiatan <span class="text-danger">*</span></label><input type="date" class="form-control" required></div>
+        <div class="col-12"><label class="form-label">Keperluan <span class="text-danger">*</span></label><textarea class="form-control" rows="2" required></textarea></div>
+      </div>`,
+    SKKM:`<h6 class="sub-judul"><i class="bi bi-person me-2"></i>Data Almarhum/Almarhumah</h6>
+      <div class="row g-3">
+        <div class="col-md-6"><label class="form-label">Nama Lengkap <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>
+        <div class="col-md-6"><label class="form-label">Bin / Binti <span class="text-danger">*</span></label><input type="text" class="form-control" placeholder="Nama ayah kandung" required></div>
+        <div class="col-md-6"><label class="form-label">NIK <span class="text-danger">*</span></label><input type="text" class="form-control" maxlength="16" required></div>
+        <div class="col-md-3"><label class="form-label">Tempat Lahir <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>
+        <div class="col-md-3"><label class="form-label">Tanggal Lahir <span class="text-danger">*</span></label><input type="date" class="form-control" required></div>
+        <div class="col-md-6"><label class="form-label">Jenis Kelamin <span class="text-danger">*</span></label><select class="form-select" required>${jk}</select></div>
+        <div class="col-md-6"><label class="form-label">Agama <span class="text-danger">*</span></label><select class="form-select" required>${ag}</select></div>
+        <div class="col-md-6"><label class="form-label">Pekerjaan <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>
+        <div class="col-12"><label class="form-label">Alamat Lengkap <span class="text-danger">*</span></label><textarea class="form-control" rows="2" required></textarea></div>
+      </div>
+      <h6 class="sub-judul"><i class="bi bi-heart-pulse me-2"></i>Data Kematian</h6>
+      <div class="row g-3">
+        <div class="col-md-6"><label class="form-label">Tanggal Meninggal <span class="text-danger">*</span></label><input type="date" class="form-control" required></div>
+        <div class="col-md-6"><label class="form-label">Tempat Meninggal <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>
+        <div class="col-md-6"><label class="form-label">Sebab Kematian <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>
+        <div class="col-md-6"><label class="form-label">Yang Menerangkan <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>
+      </div>`,
+    SKU:dasar(`<div class="col-md-6"><label class="form-label">Jenis Usaha <span class="text-danger">*</span></label><input type="text" class="form-control" required></div>`),
+    SKK:dasar(`<div class="col-12"><label class="form-label">Keperluan <span class="text-danger">*</span></label><textarea class="form-control" rows="2" required></textarea></div><div class="col-md-6"><label class="form-label">Tempat Kejadian <span class="text-danger">*</span></label><input type="text" class="form-control" required></div><div class="col-md-6"><label class="form-label">Tanggal Kejadian <span class="text-danger">*</span></label><input type="date" class="form-control" required></div>`),
+  };
+  return forms[kode]||dasar(`<div class="col-12"><label class="form-label">Keperluan <span class="text-danger">*</span></label><textarea class="form-control" rows="2" placeholder="Jelaskan keperluan surat..." required></textarea></div>`);
+}
+</script>
+</body>
+</html>

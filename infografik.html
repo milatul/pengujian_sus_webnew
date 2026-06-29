@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Infografik APBDesa - Desa Wonokromo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+  *{font-family:'Plus Jakarta Sans',sans-serif;}
+  body{background:#f5f7f0;}
+  .navbar-desa{background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 100%);box-shadow:0 2px 20px rgba(0,0,0,.25);padding:.75rem 0;}
+  .navbar-desa .navbar-brand{font-weight:800;font-size:1.1rem;color:#fff!important;display:flex;align-items:center;gap:.5rem;}
+  .navbar-desa .nav-link{color:rgba(255,255,255,.88)!important;font-weight:600;font-size:.92rem;padding:.5rem .8rem!important;border-radius:8px;transition:all .2s;}
+  .navbar-desa .nav-link:hover,.navbar-desa .nav-link.active{color:#fff!important;background:rgba(255,255,255,.15);}
+  .navbar-desa .dropdown-menu{border:none;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.15);}
+  .navbar-desa .dropdown-item{font-weight:600;font-size:.9rem;}
+  .navbar-desa .dropdown-item:hover{background:#f5f7f0;color:#1b5e20;}
+  .btn-masuk-nav{background:#f9a825!important;color:#1b5e20!important;font-weight:700!important;border-radius:20px!important;padding:.35rem 1.1rem!important;border:none;}
+  .navbar-toggler{border-color:rgba(255,255,255,.4);}
+  .navbar-toggler-icon{filter:invert(1);}
+  .card{border:none;border-radius:14px;box-shadow:0 2px 15px rgba(0,0,0,.07);}
+  .card-hover{transition:transform .25s,box-shadow .25s;}
+  .card-hover:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.12);}
+  .btn-hijau{background:#2e7d32;color:#fff;border:none;font-weight:600;}
+  .btn-hijau:hover{background:#1b5e20;color:#fff;}
+  .section-title{font-weight:800;color:#1b5e20;position:relative;padding-bottom:.6rem;}
+  .section-title::after{content:'';position:absolute;bottom:0;left:0;width:50px;height:3px;background:#f9a825;border-radius:2px;}
+  .fw-600{font-weight:600!important;} .fw-700{font-weight:700!important;} .fw-800{font-weight:800!important;}
+  .badge-hijau{background:#2e7d32;}
+  .footer-desa{background:linear-gradient(135deg,#1b5e20,#0d3b11);color:rgba(255,255,255,.85);padding:2.5rem 0 1rem;margin-top:3rem;}
+  .footer-desa h6{color:#f9a825;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;}
+  .footer-desa a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;}
+  .footer-desa a:hover{color:#f9a825;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:1.5rem;padding-top:1rem;font-size:.82rem;color:rgba(255,255,255,.5);}
+</style>
+</head>
+<body><nav class="navbar navbar-expand-lg navbar-desa sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div style="width:42px;height:42px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="bi bi-house-heart-fill" style="font-size:1.2rem;color:#fdd835"></i></div>
+      <div><div style="font-size:.75rem;font-weight:500;opacity:.8;line-height:1">Desa Wonokromo</div><div style="font-size:.85rem;line-height:1.2">Kec. Tikung, Kab. Lamongan</div></div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house me-1"></i>Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="berita.html"><i class="bi bi-newspaper me-1"></i>Berita</a></li>
+        <li class="nav-item"><a class="nav-link" href="profil_desa.html"><i class="bi bi-info-circle me-1"></i>Profil Desa</a></li>
+        <li class="nav-item"><a class="nav-link" href="perangkat_desa.html"><i class="bi bi-people me-1"></i>Perangkat</a></li>
+        <li class="nav-item"><a class="nav-link" href="infografik.html"><i class="bi bi-bar-chart-line me-1"></i>APBDesa</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="bi bi-diagram-3 me-1"></i>Lembaga</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-building me-2 text-success"></i>BPD</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-people-fill me-2 text-success"></i>LPM</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-shop me-2 text-success"></i>BUMDes</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-heart me-2 text-success"></i>PKK</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-stars me-2 text-success"></i>Karang Taruna</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="masuk_warga.html" class="btn btn-masuk-nav ms-2"><i class="bi bi-box-arrow-in-right me-1"></i>Masuk</a>
+    </div>
+  </div>
+</nav><div style="background:linear-gradient(135deg,#1b5e20,#2e7d32);padding:3rem 0 2rem;position:relative;overflow:hidden;">
+  <div class="container">
+    <h1 style="color:#fff;font-weight:800;font-size:2rem;"><i class="bi bi-bar-chart-line me-2" style="color:#fdd835;"></i>Infografik APBDesa</h1>
+    <p style="color:rgba(255,255,255,.75);">Transparansi Anggaran Pendapatan dan Belanja Desa Wonokromo</p>
+    <div class="d-flex gap-2 mt-3 flex-wrap">
+      <a href="infografik.html" class="btn btn-sm fw-600" style="background:rgba(255,255,255,.25);color:#fff;border:1px solid rgba(255,255,255,.4);"><i class="bi bi-bar-chart-line me-1"></i>Infografik APBDesa</a>
+      <a href="lpj.html" class="btn btn-sm fw-600" style="background:#f9a825;color:#1b5e20;border:none;"><i class="bi bi-file-earmark-text-fill me-1"></i>LPJ APBDesa</a>
+    </div>
+  </div>
+  <div style="position:absolute;bottom:-1px;left:0;right:0;pointer-events:none;"><svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f5f7f0"/></svg></div>
+</div><div class="container py-5"><div class="row g-4"><div class="col-md-6 col-lg-4">
+  <div class="card card-hover h-100">
+    <div style="height:200px;background:linear-gradient(135deg,#e8f5e9,#a5d6a7);border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;">
+      <i class="bi bi-bar-chart-line" style="font-size:3rem;color:#2e7d32;opacity:.6;"></i>
+      <span style="font-size:.85rem;font-weight:700;color:#2e7d32;">TA 2026</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <span class="badge mb-2" style="background:#f9a825;color:#1b5e20;font-size:.78rem;width:fit-content;padding:.35rem .8rem;"><i class="bi bi-calendar me-1"></i>TA 2026</span>
+      <h6 class="card-title fw-700" style="color:#1b5e20;flex-grow:1;">APBDesa Wonokromo Tahun Anggaran 2026</h6>
+      <p class="card-text text-muted" style="font-size:.88rem;">Anggaran Pendapatan dan Belanja Desa Wonokromo Tahun Anggaran 2026 beserta rincian program pembangunan dan pemberdayaan masyarakat.</p>
+      <a href="detail_infografik.html" class="btn btn-hijau btn-sm mt-2"><i class="bi bi-arrow-right me-1"></i>Lihat Detail</a>
+    </div>
+  </div>
+</div><div class="col-md-6 col-lg-4">
+  <div class="card card-hover h-100">
+    <div style="height:200px;background:linear-gradient(135deg,#e8f5e9,#a5d6a7);border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;">
+      <i class="bi bi-bar-chart-line" style="font-size:3rem;color:#2e7d32;opacity:.6;"></i>
+      <span style="font-size:.85rem;font-weight:700;color:#2e7d32;">TA 2025</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <span class="badge mb-2" style="background:#f9a825;color:#1b5e20;font-size:.78rem;width:fit-content;padding:.35rem .8rem;"><i class="bi bi-calendar me-1"></i>TA 2025</span>
+      <h6 class="card-title fw-700" style="color:#1b5e20;flex-grow:1;">Realisasi APBDesa Wonokromo Tahun Anggaran 2025</h6>
+      <p class="card-text text-muted" style="font-size:.88rem;">Laporan realisasi pelaksanaan APBDesa tahun anggaran 2025 mencakup pendapatan, belanja, dan pembiayaan desa secara lengkap.</p>
+      <a href="detail_infografik.html" class="btn btn-hijau btn-sm mt-2"><i class="bi bi-arrow-right me-1"></i>Lihat Detail</a>
+    </div>
+  </div>
+</div><div class="col-md-6 col-lg-4">
+  <div class="card card-hover h-100">
+    <div style="height:200px;background:linear-gradient(135deg,#e8f5e9,#a5d6a7);border-radius:14px 14px 0 0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;">
+      <i class="bi bi-bar-chart-line" style="font-size:3rem;color:#2e7d32;opacity:.6;"></i>
+      <span style="font-size:.85rem;font-weight:700;color:#2e7d32;">TA 2024</span>
+    </div>
+    <div class="card-body d-flex flex-column">
+      <span class="badge mb-2" style="background:#f9a825;color:#1b5e20;font-size:.78rem;width:fit-content;padding:.35rem .8rem;"><i class="bi bi-calendar me-1"></i>TA 2024</span>
+      <h6 class="card-title fw-700" style="color:#1b5e20;flex-grow:1;">Realisasi APBDesa Wonokromo Tahun Anggaran 2024</h6>
+      <p class="card-text text-muted" style="font-size:.88rem;">Dokumentasi realisasi APBDesa tahun 2024 sebagai bentuk transparansi dan akuntabilitas pengelolaan keuangan desa.</p>
+      <a href="detail_infografik.html" class="btn btn-hijau btn-sm mt-2"><i class="bi bi-arrow-right me-1"></i>Lihat Detail</a>
+    </div>
+  </div>
+</div></div></div><footer class="footer-desa">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4"><h6><i class="bi bi-house-heart me-2"></i>Desa Wonokromo</h6><p style="font-size:.9rem;line-height:1.7">Desa Wonokromo, Kecamatan Tikung,<br>Kabupaten Lamongan, Jawa Timur<br>Kode Pos: 62284</p></div>
+      <div class="col-md-4"><h6><i class="bi bi-telephone me-2"></i>Kontak Kami</h6><ul class="list-unstyled" style="font-size:.9rem"><li class="mb-1"><i class="bi bi-telephone-fill me-2 text-warning"></i>(0322) 123456</li><li class="mb-1"><i class="bi bi-envelope-fill me-2 text-warning"></i>desawonokromo@gmail.com</li><li class="mb-1"><i class="bi bi-clock-fill me-2 text-warning"></i>Senin - Jumat, 08.00 - 15.00</li></ul></div>
+      <div class="col-md-4"><h6><i class="bi bi-link-45deg me-2"></i>Tautan Cepat</h6><ul class="list-unstyled" style="font-size:.9rem"><li class="mb-1"><a href="berita.html"><i class="bi bi-chevron-right me-1"></i>Berita Desa</a></li><li class="mb-1"><a href="profil_desa.html"><i class="bi bi-chevron-right me-1"></i>Profil Desa</a></li><li class="mb-1"><a href="lembaga_desa.html"><i class="bi bi-chevron-right me-1"></i>Lembaga Desa</a></li><li class="mb-1"><a href="masuk_warga.html"><i class="bi bi-chevron-right me-1"></i>Pengajuan Surat</a></li></ul></div>
+    </div>
+    <div class="footer-bottom text-center">© 2026 Desa Wonokromo, Kecamatan Tikung, Kabupaten Lamongan.</div>
+  </div>
+</footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script></body></html>

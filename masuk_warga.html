@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Masuk Warga - Desa Wonokromo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *{font-family:'Plus Jakarta Sans',sans-serif;}
+    body{background:#f5f7f0;}
+    .navbar-desa{background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 100%);box-shadow:0 2px 20px rgba(0,0,0,.25);padding:.75rem 0;}
+    .navbar-desa .navbar-brand{font-weight:800;color:#fff!important;display:flex;align-items:center;gap:.5rem;}
+    .navbar-desa .nav-link{color:rgba(255,255,255,.88)!important;font-weight:600;font-size:.92rem;padding:.5rem .8rem!important;border-radius:8px;}
+    .navbar-desa .nav-link:hover{color:#fff!important;background:rgba(255,255,255,.15);}
+    .navbar-desa .dropdown-menu{border:none;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.15);}
+    .navbar-desa .dropdown-item{font-weight:600;font-size:.9rem;}
+    .btn-masuk-nav{background:#f9a825!important;color:#1b5e20!important;font-weight:700!important;border-radius:20px!important;padding:.35rem 1.1rem!important;border:none;}
+    .navbar-toggler{border-color:rgba(255,255,255,.4);}
+    .navbar-toggler-icon{filter:invert(1);}
+    .footer-desa{background:linear-gradient(135deg,#1b5e20,#0d3b11);color:rgba(255,255,255,.85);padding:2.5rem 0 1rem;margin-top:3rem;}
+    .footer-desa h6{color:#f9a825;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;}
+    .footer-desa a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:1.5rem;padding-top:1rem;font-size:.82rem;color:rgba(255,255,255,.5);}
+    .form-control{border-radius:10px;border:2px solid #c8e6c9;padding:.65rem 1rem;font-size:.95rem;transition:border-color .2s,box-shadow .2s;}
+    .form-control:focus{border-color:#2e7d32;box-shadow:0 0 0 3px rgba(46,125,50,.1);}
+    .form-control.is-invalid{border-color:#e53935!important;}
+    .btn-hijau{background:linear-gradient(135deg,#2e7d32,#43a047);color:#fff;border:none;font-weight:700;transition:all .2s;}
+    .btn-hijau:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(46,125,50,.35);color:#fff;}
+    .fw-600{font-weight:600;}
+    .shake{animation:shake .4s ease;}
+    @keyframes shake{0%,100%{transform:translateX(0);}20%,60%{transform:translateX(-8px);}40%,80%{transform:translateX(8px);}}
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-desa sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div style="width:42px;height:42px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+        <i class="bi bi-house-heart-fill" style="font-size:1.2rem;color:#fdd835"></i>
+      </div>
+      <div>
+        <div style="font-size:.75rem;font-weight:500;opacity:.8;line-height:1">Desa Wonokromo</div>
+        <div style="font-size:.85rem;line-height:1.2">Kec. Tikung, Kab. Lamongan</div>
+      </div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house me-1"></i>Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="berita.html"><i class="bi bi-newspaper me-1"></i>Berita</a></li>
+        <li class="nav-item"><a class="nav-link" href="profil_desa.html"><i class="bi bi-info-circle me-1"></i>Profil Desa</a></li>
+        <li class="nav-item"><a class="nav-link" href="perangkat_desa.html"><i class="bi bi-people me-1"></i>Perangkat</a></li>
+        <li class="nav-item"><a class="nav-link" href="infografik.html"><i class="bi bi-bar-chart-line me-1"></i>APBDesa</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="bi bi-diagram-3 me-1"></i>Lembaga</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-building me-2 text-success"></i>BPD</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-people-fill me-2 text-success"></i>LPM</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="masuk_warga.html" class="btn btn-masuk-nav ms-2"><i class="bi bi-box-arrow-in-right me-1"></i>Masuk</a>
+    </div>
+  </div>
+</nav>
+
+<div style="min-height:80vh;background:linear-gradient(135deg,#e8f5e9 0%,#f1f8e9 100%);display:flex;align-items:center;padding:3rem 0;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-md-7 col-lg-5">
+
+        <div class="text-center mb-4">
+          <div style="width:72px;height:72px;background:linear-gradient(135deg,#2e7d32,#43a047);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;box-shadow:0 8px 24px rgba(46,125,50,.3);">
+            <i class="bi bi-person-badge-fill" style="font-size:2.2rem;color:#fff;"></i>
+          </div>
+          <h3 style="font-weight:800;color:#1b5e20;">Portal Warga</h3>
+          <p class="text-muted" style="font-size:.93rem;">Masuk untuk mengajukan surat</p>
+        </div>
+
+        <!-- Alert error -->
+        <div id="alertGagal" class="alert d-none align-items-start gap-2 mb-3" style="background:#fdecea;border:1px solid #ef9a9a;border-radius:12px;color:#c62828;">
+          <i class="bi bi-exclamation-circle-fill mt-1"></i>
+          <div>
+            <strong>Login Gagal!</strong><br>
+            <span id="pesanGagal" style="font-size:.88rem;">NIK atau kata sandi salah.</span>
+          </div>
+        </div>
+
+        <!-- Alert sukses -->
+        <div id="alertSukses" class="alert d-none align-items-start gap-2 mb-3" style="background:#e8f5e9;border:1px solid #a5d6a7;border-radius:12px;color:#1b5e20;">
+          <i class="bi bi-check-circle-fill mt-1"></i>
+          <div>
+            <strong>Login Berhasil!</strong><br>
+            <span style="font-size:.88rem;">Selamat datang, <span id="namaWarga"></span>! Mengarahkan ke halaman pengajuan...</span>
+          </div>
+        </div>
+
+        <div class="card p-4" id="kartuLogin" style="border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.1);">
+          <div class="mb-3">
+            <label class="form-label fw-600" style="color:#1b5e20;"><i class="bi bi-person-vcard me-1"></i>NIK (Nomor Induk Kependudukan)</label>
+            <input type="text" id="inputNIK" class="form-control" placeholder="Masukkan 16 digit NIK Anda" maxlength="16" inputmode="numeric">
+            <div class="invalid-feedback" id="errorNIK">NIK harus 16 digit angka.</div>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-600" style="color:#1b5e20;"><i class="bi bi-lock me-1"></i>Kata Sandi</label>
+            <div class="input-group">
+              <input type="password" id="inputSandi" class="form-control" placeholder="Format: DDMMYYYY (tgl lahir)" style="border-radius:10px 0 0 10px;border-right:none;">
+              <button class="btn" type="button" onclick="lihatSandi()" style="border:2px solid #c8e6c9;border-left:none;border-radius:0 10px 10px 0;background:#f9fff9;">
+                <i class="bi bi-eye" id="ikonSandi"></i>
+              </button>
+            </div>
+            <div id="errorSandi" style="font-size:.85rem;color:#e53935;margin-top:.3rem;display:none;">Kata sandi tidak boleh kosong.</div>
+            <div class="d-flex justify-content-end mt-1">
+              <a href="lupa_sandi.html" style="font-size:.85rem;color:#2e7d32;font-weight:600;"><i class="bi bi-question-circle me-1"></i>Lupa kata sandi?</a>
+            </div>
+          </div>
+          <button onclick="prosesLogin()" id="btnMasuk" class="btn btn-hijau btn-lg w-100" style="border-radius:12px;padding:.8rem;">
+            <span id="teksBtn"><i class="bi bi-box-arrow-in-right me-2"></i>Masuk</span>
+            <span id="loadingBtn" class="d-none"><span class="spinner-border spinner-border-sm me-2"></span>Memproses...</span>
+          </button>
+
+          <div class="text-center mt-4 pt-3" style="border-top:1px solid #e8f5e9;">
+            <p class="text-muted" style="font-size:.85rem;margin:0;">Belum punya akun? Hubungi Kantor Desa.</p>
+            <p class="mt-1" style="font-size:.82rem;color:#2e7d32;"><i class="bi bi-telephone me-1"></i>(0322) 123456</p>
+          </div>
+        </div>
+
+        <!-- Info akun pengujian -->
+        <div class="card mt-3 p-3" style="border-radius:14px;border:1px dashed #a5d6a7;background:#f9fff9;">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-info-circle-fill text-success"></i>
+            <strong style="color:#1b5e20;font-size:.88rem;">Akun Pengujian (Demo)</strong>
+          </div>
+          <div style="font-size:.82rem;color:#444;">
+            <div class="mb-1">Format sandi: <strong>Tanggal lahir DDMMYYYY</strong></div>
+            <table class="table table-sm mb-0" style="font-size:.8rem;">
+              <thead><tr><th style="color:#1b5e20;">Nama</th><th style="color:#1b5e20;">NIK</th><th style="color:#1b5e20;">Sandi</th></tr></thead>
+              <tbody>
+                <tr><td>Siti Aminah</td><td><code>3573010101900001</code></td><td><code>01011990</code></td></tr>
+                <tr><td>Budi Prasetyo</td><td><code>3573010201950002</code></td><td><code>02021995</code></td></tr>
+                <tr><td>Dewi Anggraini</td><td><code>3573010301850003</code></td><td><code>03031985</code></td></tr>
+                <tr><td>Ahmad Ridwan</td><td><code>3573010401920004</code></td><td><code>04041992</code></td></tr>
+                <tr><td>Sri Mulyati</td><td><code>3573010501980005</code></td><td><code>05051998</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="alert alert-info mt-3 rounded-3" style="font-size:.83rem;border:none;background:#e3f2fd;">
+          <i class="bi bi-info-circle-fill me-2 text-primary"></i>
+          <strong>Info:</strong> Kata sandi awal adalah tanggal lahir format <strong>DDMMYYYY</strong> (contoh: <strong>25011990</strong>).
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer-desa">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4"><h6><i class="bi bi-house-heart me-2"></i>Desa Wonokromo</h6><p style="font-size:.9rem;line-height:1.7">Desa Wonokromo, Kecamatan Tikung,<br>Kabupaten Lamongan, Jawa Timur</p></div>
+      <div class="col-md-4"><h6><i class="bi bi-telephone me-2"></i>Kontak Kami</h6><ul class="list-unstyled" style="font-size:.9rem"><li class="mb-1"><i class="bi bi-telephone-fill me-2 text-warning"></i>(0322) 123456</li><li class="mb-1"><i class="bi bi-envelope-fill me-2 text-warning"></i>desawonokromo@gmail.com</li></ul></div>
+      <div class="col-md-4"><h6><i class="bi bi-link-45deg me-2"></i>Tautan Cepat</h6><ul class="list-unstyled" style="font-size:.9rem"><li class="mb-1"><a href="index.html"><i class="bi bi-chevron-right me-1"></i>Beranda</a></li><li class="mb-1"><a href="berita.html"><i class="bi bi-chevron-right me-1"></i>Berita Desa</a></li></ul></div>
+    </div>
+    <div class="footer-bottom text-center">© 2026 Desa Wonokromo, Kecamatan Tikung, Kabupaten Lamongan.</div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ─── Data warga dummy ───
+  // Format sandi: DDMMYYYY dari tanggal lahir
+  const dataWarga = [
+    { nik: '3573010101900001', sandi: '01011990', nama: 'Siti Aminah',    tglLahir: '1 Januari 1990' },
+    { nik: '3573010201950002', sandi: '02021995', nama: 'Budi Prasetyo',  tglLahir: '2 Februari 1995' },
+    { nik: '3573010301850003', sandi: '03031985', nama: 'Dewi Anggraini', tglLahir: '3 Maret 1985' },
+    { nik: '3573010401920004', sandi: '04041992', nama: 'Ahmad Ridwan',   tglLahir: '4 April 1992' },
+    { nik: '3573010501980005', sandi: '05051998', nama: 'Sri Mulyati',    tglLahir: '5 Mei 1998' },
+    { nik: '3573010601750006', sandi: '06061975', nama: 'Hasan Basri',    tglLahir: '6 Juni 1975' },
+    { nik: '3573010701880007', sandi: '07071988', nama: 'Fatimah Zahra',  tglLahir: '7 Juli 1988' },
+    { nik: '3573010801930008', sandi: '08081993', nama: 'Rudi Santoso',   tglLahir: '8 Agustus 1993' },
+  ];
+
+  function lihatSandi() {
+    const inp = document.getElementById('inputSandi');
+    const ikon = document.getElementById('ikonSandi');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+    ikon.className = inp.type === 'password' ? 'bi bi-eye' : 'bi bi-eye-slash';
+  }
+
+  function prosesLogin() {
+    const nik   = document.getElementById('inputNIK').value.trim();
+    const sandi = document.getElementById('inputSandi').value.trim();
+    const btn   = document.getElementById('btnMasuk');
+    const kartu = document.getElementById('kartuLogin');
+
+    // Reset state
+    document.getElementById('alertGagal').classList.add('d-none');
+    document.getElementById('alertSukses').classList.add('d-none');
+    document.getElementById('inputNIK').classList.remove('is-invalid');
+    document.getElementById('inputSandi').style.borderColor = '#c8e6c9';
+    document.getElementById('errorNIK').style.display = 'none';
+    document.getElementById('errorSandi').style.display = 'none';
+
+    // Validasi format NIK
+    if (!/^\d{16}$/.test(nik)) {
+      document.getElementById('inputNIK').classList.add('is-invalid');
+      document.getElementById('errorNIK').style.display = 'block';
+      document.getElementById('inputNIK').focus();
+      return;
+    }
+
+    // Validasi sandi tidak kosong
+    if (!sandi) {
+      document.getElementById('inputSandi').style.borderColor = '#e53935';
+      document.getElementById('errorSandi').style.display = 'block';
+      document.getElementById('inputSandi').focus();
+      return;
+    }
+
+    // Tampilkan loading
+    btn.disabled = true;
+    document.getElementById('teksBtn').classList.add('d-none');
+    document.getElementById('loadingBtn').classList.remove('d-none');
+
+    // Simulasi delay proses
+    setTimeout(() => {
+      const warga = dataWarga.find(w => w.nik === nik && w.sandi === sandi);
+
+      btn.disabled = false;
+      document.getElementById('teksBtn').classList.remove('d-none');
+      document.getElementById('loadingBtn').classList.add('d-none');
+
+      if (warga) {
+        // Login berhasil
+        document.getElementById('namaWarga').textContent = warga.nama;
+        document.getElementById('alertSukses').classList.remove('d-none');
+        document.getElementById('alertSukses').classList.add('d-flex');
+        kartu.style.opacity = '0.5';
+        kartu.style.pointerEvents = 'none';
+
+        // Simpan sesi & redirect ke halaman pengajuan
+        sessionStorage.setItem('wargaLogin', JSON.stringify({ nama: warga.nama, nik: warga.nik, sandi: warga.sandi }));
+        setTimeout(() => {
+          window.location.href = 'pengajuan_surat.html';
+        }, 1500);
+      } else {
+        // Login gagal
+        // Cek apakah NIK ada tapi sandi salah
+        const adaNIK = dataWarga.find(w => w.nik === nik);
+        const pesan = adaNIK
+          ? 'NIK ditemukan, tetapi kata sandi salah. Sandi adalah tanggal lahir format DDMMYYYY.'
+          : 'NIK tidak terdaftar. Pastikan NIK 16 digit sesuai KTP.';
+
+        document.getElementById('pesanGagal').textContent = pesan;
+        document.getElementById('alertGagal').classList.remove('d-none');
+        document.getElementById('alertGagal').classList.add('d-flex');
+
+        // Shake effect pada kartu
+        kartu.classList.add('shake');
+        setTimeout(() => kartu.classList.remove('shake'), 400);
+
+        // Highlight field yang salah
+        if (adaNIK) {
+          document.getElementById('inputSandi').style.borderColor = '#e53935';
+          document.getElementById('inputSandi').focus();
+          document.getElementById('inputSandi').select();
+        } else {
+          document.getElementById('inputNIK').classList.add('is-invalid');
+          document.getElementById('inputNIK').focus();
+        }
+      }
+    }, 800);
+  }
+
+  // Enter key support
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('inputNIK').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('inputSandi').focus(); });
+    document.getElementById('inputSandi').addEventListener('keydown', e => { if (e.key === 'Enter') prosesLogin(); });
+
+    // Hanya angka untuk NIK
+    document.getElementById('inputNIK').addEventListener('input', function() {
+      this.value = this.value.replace(/\D/g, '');
+    });
+  });
+</script>
+</body>
+</html>

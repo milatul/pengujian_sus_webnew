@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Profil Desa - Desa Wonokromo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+  *{font-family:'Plus Jakarta Sans',sans-serif;}
+  body{background:#f5f7f0;}
+  .navbar-desa{background:linear-gradient(135deg,#1b5e20 0%,#2e7d32 100%);box-shadow:0 2px 20px rgba(0,0,0,.25);padding:.75rem 0;}
+  .navbar-desa .navbar-brand{font-weight:800;font-size:1.1rem;color:#fff!important;display:flex;align-items:center;gap:.5rem;}
+  .navbar-desa .nav-link{color:rgba(255,255,255,.88)!important;font-weight:600;font-size:.92rem;padding:.5rem .8rem!important;border-radius:8px;transition:all .2s;}
+  .navbar-desa .nav-link:hover,.navbar-desa .nav-link.active{color:#fff!important;background:rgba(255,255,255,.15);}
+  .navbar-desa .dropdown-menu{border:none;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.15);}
+  .navbar-desa .dropdown-item{font-weight:600;font-size:.9rem;}
+  .navbar-desa .dropdown-item:hover{background:#f5f7f0;color:#1b5e20;}
+  .btn-masuk-nav{background:#f9a825!important;color:#1b5e20!important;font-weight:700!important;border-radius:20px!important;padding:.35rem 1.1rem!important;border:none;}
+  .navbar-toggler{border-color:rgba(255,255,255,.4);}
+  .navbar-toggler-icon{filter:invert(1);}
+  .card{border:none;border-radius:14px;box-shadow:0 2px 15px rgba(0,0,0,.07);}
+  .card-hover{transition:transform .25s,box-shadow .25s;}
+  .card-hover:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.12);}
+  .btn-hijau{background:#2e7d32;color:#fff;border:none;font-weight:600;}
+  .btn-hijau:hover{background:#1b5e20;color:#fff;}
+  .section-title{font-weight:800;color:#1b5e20;position:relative;padding-bottom:.6rem;}
+  .section-title::after{content:'';position:absolute;bottom:0;left:0;width:50px;height:3px;background:#f9a825;border-radius:2px;}
+  .fw-600{font-weight:600!important;} .fw-700{font-weight:700!important;} .fw-800{font-weight:800!important;}
+  .badge-hijau{background:#2e7d32;}
+  .footer-desa{background:linear-gradient(135deg,#1b5e20,#0d3b11);color:rgba(255,255,255,.85);padding:2.5rem 0 1rem;margin-top:3rem;}
+  .footer-desa h6{color:#f9a825;font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;}
+  .footer-desa a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.9rem;}
+  .footer-desa a:hover{color:#f9a825;}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.1);margin-top:1.5rem;padding-top:1rem;font-size:.82rem;color:rgba(255,255,255,.5);}
+</style>
+</head>
+<body><nav class="navbar navbar-expand-lg navbar-desa sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <div style="width:42px;height:42px;background:rgba(255,255,255,.2);border-radius:50%;display:flex;align-items:center;justify-content:center;"><i class="bi bi-house-heart-fill" style="font-size:1.2rem;color:#fdd835"></i></div>
+      <div><div style="font-size:.75rem;font-weight:500;opacity:.8;line-height:1">Desa Wonokromo</div><div style="font-size:.85rem;line-height:1.2">Kec. Tikung, Kab. Lamongan</div></div>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house me-1"></i>Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="berita.html"><i class="bi bi-newspaper me-1"></i>Berita</a></li>
+        <li class="nav-item"><a class="nav-link" href="profil_desa.html"><i class="bi bi-info-circle me-1"></i>Profil Desa</a></li>
+        <li class="nav-item"><a class="nav-link" href="perangkat_desa.html"><i class="bi bi-people me-1"></i>Perangkat</a></li>
+        <li class="nav-item"><a class="nav-link" href="infografik.html"><i class="bi bi-bar-chart-line me-1"></i>APBDesa</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i class="bi bi-diagram-3 me-1"></i>Lembaga</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-building me-2 text-success"></i>BPD</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-people-fill me-2 text-success"></i>LPM</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-shop me-2 text-success"></i>BUMDes</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-heart me-2 text-success"></i>PKK</a></li>
+            <li><a class="dropdown-item" href="lembaga_desa.html"><i class="bi bi-stars me-2 text-success"></i>Karang Taruna</a></li>
+          </ul>
+        </li>
+      </ul>
+      <a href="masuk_warga.html" class="btn btn-masuk-nav ms-2"><i class="bi bi-box-arrow-in-right me-1"></i>Masuk</a>
+    </div>
+  </div>
+</nav><div style="background:linear-gradient(135deg,#1b5e20,#2e7d32);padding:3rem 0 2rem;position:relative;overflow:hidden;">
+  <div class="container">
+    <h1 style="color:#fff;font-weight:800;font-size:2rem;"><i class="bi bi-building me-2" style="color:#fdd835;"></i> Profil Desa Wonokromo</h1>
+    
+  </div>
+  <div style="position:absolute;bottom:-1px;left:0;right:0;">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#f5f7f0"/></svg>
+  </div>
+</div><div class="container py-5">
+  <ul class="nav nav-pills mb-4 gap-2" role="tablist">
+    <li class="nav-item"><button class="nav-link active px-4 fw-600" data-bs-toggle="pill" data-bs-target="#visiMisi" type="button"><i class="bi bi-eye me-1"></i>Visi &amp; Misi</button></li>
+    <li class="nav-item"><button class="nav-link px-4 fw-600" data-bs-toggle="pill" data-bs-target="#sejarah" type="button"><i class="bi bi-book me-1"></i>Sejarah Desa</button></li>
+    <li class="nav-item"><button class="nav-link px-4 fw-600" data-bs-toggle="pill" data-bs-target="#lokasi" type="button"><i class="bi bi-geo-alt me-1"></i>Lokasi Desa</button></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="visiMisi">
+      <div class="row g-4">
+        <div class="col-md-5"><div class="card h-100" style="border-left:5px solid #2e7d32;padding:1.5rem;">
+          <div class="d-flex align-items-center gap-2 mb-3"><div style="width:44px;height:44px;background:#e8f5e9;border-radius:12px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-eye-fill" style="color:#2e7d32;font-size:1.3rem;"></i></div><h4 style="color:#1b5e20;font-weight:800;margin:0;">VISI</h4></div>
+          <p style="font-style:italic;color:#333;line-height:1.8;font-size:.97rem;">"Terwujudnya Desa Wonokromo yang Maju, Mandiri, Sejahtera, dan Berkeadilan berlandaskan Nilai-nilai Agama dan Budaya Luhur"</p>
+        </div></div>
+        <div class="col-md-7"><div class="card h-100" style="border-left:5px solid #f9a825;padding:1.5rem;">
+          <div class="d-flex align-items-center gap-2 mb-3"><div style="width:44px;height:44px;background:#fff8e1;border-radius:12px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-list-check" style="color:#f9a825;font-size:1.3rem;"></i></div><h4 style="color:#1b5e20;font-weight:800;margin:0;">MISI</h4></div>
+          <ol style="line-height:2;color:#333;font-size:.95rem;padding-left:1.2rem;">
+            <li>Meningkatkan kualitas sumber daya manusia melalui pendidikan dan pelatihan.</li>
+            <li>Mengembangkan potensi ekonomi desa berbasis pertanian dan UMKM.</li>
+            <li>Meningkatkan kualitas infrastruktur dan sarana prasarana desa.</li>
+            <li>Mewujudkan tata kelola pemerintahan desa yang transparan dan akuntabel.</li>
+            <li>Meningkatkan derajat kesehatan masyarakat desa.</li>
+          </ol>
+        </div></div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="sejarah">
+      <div class="card"><div class="card-body p-4">
+        <div class="d-flex align-items-center gap-3 mb-4"><div style="width:50px;height:50px;background:#e8f5e9;border-radius:14px;display:flex;align-items:center;justify-content:center;"><i class="bi bi-book-fill" style="color:#2e7d32;font-size:1.5rem;"></i></div><h4 style="color:#1b5e20;font-weight:800;margin:0;">Sejarah Desa Wonokromo</h4></div>
+        <div style="line-height:2;color:#444;font-size:1rem;">
+          <p>Desa Wonokromo merupakan salah satu desa yang terletak di Kecamatan Tikung, Kabupaten Lamongan, Provinsi Jawa Timur. Desa ini memiliki sejarah yang cukup panjang dan kaya akan nilai-nilai budaya lokal.</p>
+          <p>Menurut catatan sejarah setempat, Desa Wonokromo didirikan sekitar abad ke-17 oleh para leluhur yang datang dari berbagai penjuru Jawa Timur. Nama "Wonokromo" sendiri berasal dari kata dalam bahasa Jawa yang berarti hutan yang subur dan hijau, mencerminkan kondisi alam desa pada masa itu.</p>
+          <p>Seiring berjalannya waktu, desa ini berkembang menjadi permukiman yang makmur dengan mata pencaharian utama di bidang pertanian, khususnya padi dan palawija. Sistem gotong royong yang kuat menjadi ciri khas masyarakat Wonokromo sejak dahulu kala.</p>
+        </div>
+      </div></div>
+    </div>
+    <div class="tab-pane fade" id="lokasi">
+      <div class="card"><div class="card-body p-4">
+        <h4 style="color:#1b5e20;font-weight:800;margin-bottom:1rem;"><i class="bi bi-geo-alt-fill me-2" style="color:#f9a825;"></i>Lokasi Desa Wonokromo</h4>
+        <p class="text-muted mb-3">Desa Wonokromo, Kecamatan Tikung, Kabupaten Lamongan, Jawa Timur</p>
+        <div style="border-radius:14px;overflow:hidden;border:3px solid #e8f5e9;"><iframe src="https://maps.google.com/maps?q=Desa+Wonokromo+Tikung+Lamongan&output=embed" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
+      </div></div>
+    </div>
+  </div>
+</div>
+<style>.nav-pills .nav-link{color:#2e7d32;font-weight:600;border:2px solid #e8f5e9;}.nav-pills .nav-link.active{background:#2e7d32;border-color:#2e7d32;}</style><footer class="footer-desa">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4"><h6><i class="bi bi-house-heart me-2"></i>Desa Wonokromo</h6><p style="font-size:.9rem;line-height:1.7">Desa Wonokromo, Kecamatan Tikung,<br>Kabupaten Lamongan, Jawa Timur<br>Kode Pos: 62284</p></div>
+      <div class="col-md-4"><h6><i class="bi bi-telephone me-2"></i>Kontak Kami</h6><ul class="list-unstyled" style="font-size:.9rem"><li class="mb-1"><i class="bi bi-telephone-fill me-2 text-warning"></i>(0322) 123456</li><li class="mb-1"><i class="bi bi-envelope-fill me-2 text-warning"></i>desawonokromo@gmail.com</li><li class="mb-1"><i class="bi bi-clock-fill me-2 text-warning"></i>Senin - Jumat, 08.00 - 15.00</li></ul></div>
+      <div class="col-md-4"><h6><i class="bi bi-link-45deg me-2"></i>Tautan Cepat</h6><ul class="list-unstyled" style="font-size:.9rem"><li class="mb-1"><a href="berita.html"><i class="bi bi-chevron-right me-1"></i>Berita Desa</a></li><li class="mb-1"><a href="profil_desa.html"><i class="bi bi-chevron-right me-1"></i>Profil Desa</a></li><li class="mb-1"><a href="lembaga_desa.html"><i class="bi bi-chevron-right me-1"></i>Lembaga Desa</a></li><li class="mb-1"><a href="masuk_warga.html"><i class="bi bi-chevron-right me-1"></i>Pengajuan Surat</a></li></ul></div>
+    </div>
+    <div class="footer-bottom text-center">© 2026 Desa Wonokromo, Kecamatan Tikung, Kabupaten Lamongan.</div>
+  </div>
+</footer><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script></body></html>
